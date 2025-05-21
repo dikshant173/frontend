@@ -16,9 +16,12 @@ export const Cart = () => {
 
   const fetchCart = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/cart/list", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        "https://backend-pre8.onrender.com/api/cart/list",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setCartItems(res.data.products || []);
     } catch (err) {
       console.error("Fetch cart error:", err);
@@ -27,7 +30,9 @@ export const Cart = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products");
+      const res = await axios.get(
+        "https://backend-pre8.onrender.com/api/products"
+      );
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -36,9 +41,12 @@ export const Cart = () => {
 
   const handleRemove = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/remove/${productId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://backend-pre8.onrender.com/api/cart/remove/${productId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       fetchCart();
     } catch (err) {
       console.error("Error removing item:", err);

@@ -15,7 +15,9 @@ export default function Home() {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products");
+      const res = await axios.get(
+        "https://backend-pre8.onrender.com/api/products"
+      );
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products:", err);
@@ -25,7 +27,7 @@ export default function Home() {
   const handleAddToCart = async (productId) => {
     try {
       await axios.post(
-        "http://localhost:5000/api/cart/add",
+        "https://backend-pre8.onrender.com/api/cart/add",
         { productId, quantity: 1 },
         {
           headers: {
